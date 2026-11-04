@@ -1,8 +1,8 @@
 {
   "_meta": {
     "titulo": "Catálogo estructural de normas de sistemas de gestión",
-    "version": "1.0.0",
-    "actualizado": "2026-08-16",
+    "version": "1.1.0",
+    "actualizado": "2026-11-04",
     "autor": "Jesús Seiler",
     "licencia": "CC BY-SA 4.0",
     "proposito": "Dato maestro legible por máquina. Alimenta los scripts de iso-toolkit y, a futuro, un servidor MCP. Cada entrada es una REFERENCIA (número + título de cláusula) más una descripción de autoría propia de qué debe demostrar la organización.",
@@ -181,7 +181,7 @@
       "sigla_sistema": "SGSI",
       "tiene_anexo_normativo": true,
       "anexo_normativo": "anexo_a_27001",
-      "nota_verificacion": "La cláusula 6.3 'Planificación de los cambios' entró por la Enmienda 1:2024 y está presente en la edición chilenizada NCh-ISO/IEC 27001:2023. Verifica cuál edición exige tu organismo certificador.",
+      "nota_verificacion": "La cláusula 6.3 'Planificación de los cambios' es nueva en la edición 2022 (no estaba en la 2013) y está también en la edición chilena NCh-ISO/IEC 27001:2023. La Enmienda 1:2024 es otra cosa: agrega el cambio climático a 4.1 y 4.2, igual que en las demás normas de sistemas de gestión.",
       "clausulas": [
         {"num": "4.1", "titulo": "Comprensión de la organización y de su contexto", "tronco": "comun"},
         {"num": "4.2", "titulo": "Comprensión de las necesidades y expectativas de las partes interesadas", "tronco": "comun"},
@@ -475,7 +475,7 @@
       "tema": "Cláusula 6.3 — no significa lo mismo en todas",
       "detalle": {
         "9001:2015":    "6.3 Planificación de los cambios",
-        "27001:2022":   "6.3 Planificación de los cambios (entró por la Enmienda 1:2024)",
+        "27001:2022":   "6.3 Planificación de los cambios (nueva en la edición 2022)",
         "22301:2019":   "6.3 Planificación de cambios en el sistema de gestión",
         "20000-1:2018": "6.3 Planificación del SGS — ¡es otra cosa! aquí vive el plan de gestión del servicio",
         "14001:2015":   "no existe",
@@ -500,5 +500,57 @@
       },
       "por_que_importa": "Estas matrices NO se fusionan. La metodología sí puede ser una sola; los registros son cuatro."
     }
-  ]
+  ],
+
+  "correspondencia": {
+    "_nota": "Correspondencia por tema al nivel de subapartado. Cada celda es la referencia (número de cláusula o control) donde la norma trata ese tema; vacío = la norma no tiene un apartado para eso. integra: si = se documenta una vez | parcial = un documento con secciones o criterios por norma | no = propio de la norma.",
+    "verificacion": "Los números de 9001, 45001, 27001 y 22301 están verificados contra el índice de cada norma. Los de 14001 siguen la edición publicada de 2015 y los de 20000-1 salen del catálogo: de esas dos no hay un texto contra el cual comprobarlos.",
+    "filas": [
+      {"grupo": "4", "tema": "Cuestiones internas y externas", "integra": "si", "normas": {"9001": "4.1", "14001": "4.1", "45001": "4.1", "27001": "4.1", "22301": "4.1", "20000-1": "4.1"}, "nota": "14001 pide las condiciones ambientales y 22301 el apetito de riesgo: van como secciones del mismo análisis. Con las enmiendas de 2024, en las seis el análisis tiene que pronunciarse sobre si el cambio climático afecta a la organización."},
+      {"grupo": "4", "tema": "Partes interesadas y sus requisitos", "integra": "si", "normas": {"9001": "4.2", "14001": "4.2", "45001": "4.2", "27001": "4.2", "22301": "4.2.1", "20000-1": "4.2"}, "nota": "En 45001 los trabajadores son parte interesada obligatoria."},
+      {"grupo": "4", "tema": "Requisitos legales y otros requisitos", "integra": "parcial", "normas": {"9001": "5.1.2 · 8.2.2", "14001": "6.1.3", "45001": "6.1.3", "27001": "4.2 · A.5.31", "22301": "4.2.2", "20000-1": "4.2"}, "nota": "Un solo registro legal con una columna de ámbito. En 14001 y 45001, además, se evalúa su cumplimiento (9.1.2)."},
+      {"grupo": "4", "tema": "Alcance", "integra": "parcial", "normas": {"9001": "4.3", "14001": "4.3", "45001": "4.3", "27001": "4.3", "22301": "4.3.1 · 4.3.2", "20000-1": "4.3"}, "nota": "Un documento, pero el alcance de cada certificado puede ser distinto. 22301 nombra los productos y servicios cubiertos; 20000-1, los servicios."},
+      {"grupo": "4", "tema": "Procesos del sistema", "integra": "si", "normas": {"9001": "4.4.1 · 4.4.2", "14001": "4.4", "45001": "4.4", "27001": "4.4", "22301": "4.4", "20000-1": "4.4"}, "nota": "20000-1 exige gobernar también los procesos que opera un tercero."},
+      {"grupo": "5", "tema": "Liderazgo y compromiso", "integra": "si", "normas": {"9001": "5.1.1 · 5.1.2", "14001": "5.1", "45001": "5.1", "27001": "5.1", "22301": "5.1", "20000-1": "5.1"}, "nota": "9001 suma el enfoque al cliente."},
+      {"grupo": "5", "tema": "Política", "integra": "si", "normas": {"9001": "5.2.1 · 5.2.2", "14001": "5.2", "45001": "5.2", "27001": "5.2", "22301": "5.2.1 · 5.2.2", "20000-1": "5.2"}, "nota": "Una política integrada con los compromisos de las seis."},
+      {"grupo": "5", "tema": "Roles, responsabilidades y autoridades", "integra": "si", "normas": {"9001": "5.3", "14001": "5.3", "45001": "5.3", "27001": "5.3", "22301": "5.3", "20000-1": "5.3"}},
+      {"grupo": "5", "tema": "Consulta y participación de los trabajadores", "integra": "no", "normas": {"9001": "", "14001": "", "45001": "5.4", "27001": "", "22301": "", "20000-1": ""}, "nota": "Solo existe en 45001. En Chile se apoya en el Comité Paritario."},
+      {"grupo": "6", "tema": "Riesgos y oportunidades del sistema", "integra": "si", "normas": {"9001": "6.1.1 · 6.1.2", "14001": "6.1.1", "45001": "6.1.1", "27001": "6.1.1", "22301": "6.1.1 · 6.1.2", "20000-1": "6.1"}, "nota": "Una metodología para todo el sistema."},
+      {"grupo": "6", "tema": "Matriz de riesgos propia del dominio", "integra": "no", "normas": {"9001": "", "14001": "6.1.2", "45001": "6.1.2 (6.1.2.1–6.1.2.3)", "27001": "6.1.2 · 8.2", "22301": "8.2.3", "20000-1": "6.1"}, "nota": "Aspectos ambientales, peligros de SST, riesgos de la información, de continuidad y de los servicios: registros separados con la misma metodología."},
+      {"grupo": "6", "tema": "Planificación de acciones y tratamiento", "integra": "parcial", "normas": {"9001": "6.1.2", "14001": "6.1.4", "45001": "6.1.4 · 8.1.2", "27001": "6.1.3 · 8.3", "22301": "6.1.2", "20000-1": "6.1"}, "nota": "27001 exige además la Declaración de Aplicabilidad (6.1.3). 45001 obliga a seguir la jerarquía de controles (8.1.2)."},
+      {"grupo": "6", "tema": "Objetivos y su planificación", "integra": "si", "normas": {"9001": "6.2.1 · 6.2.2", "14001": "6.2.1 · 6.2.2", "45001": "6.2.1 · 6.2.2", "27001": "6.2", "22301": "6.2.1 · 6.2.2", "20000-1": "6.2"}, "nota": "Un cuadro de objetivos con columna de norma. En 22301 se amarran a los tiempos de recuperación."},
+      {"grupo": "6", "tema": "Cambios en el sistema de gestión", "integra": "parcial", "normas": {"9001": "6.3", "14001": "", "45001": "", "27001": "6.3", "22301": "6.3", "20000-1": ""}, "nota": "14001 y 45001 no tienen este apartado. La 6.3 de 20000-1 es otra cosa: ver la fila siguiente."},
+      {"grupo": "6", "tema": "Plan de gestión del servicio", "integra": "no", "normas": {"9001": "", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "6.3"}},
+      {"grupo": "7", "tema": "Recursos", "integra": "si", "normas": {"9001": "7.1.1–7.1.4", "14001": "7.1", "45001": "7.1", "27001": "7.1", "22301": "7.1", "20000-1": "7.1"}},
+      {"grupo": "7", "tema": "Equipos de seguimiento y medición", "integra": "parcial", "normas": {"9001": "7.1.5 (7.1.5.1 · 7.1.5.2)", "14001": "9.1.1", "45001": "9.1.1", "27001": "", "22301": "", "20000-1": ""}, "nota": "Un programa de calibración y verificación sirve a las tres."},
+      {"grupo": "7", "tema": "Conocimiento de la organización", "integra": "si", "normas": {"9001": "7.1.6", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "7.6"}, "nota": "Un solo proceso de gestión del conocimiento."},
+      {"grupo": "7", "tema": "Competencia", "integra": "si", "normas": {"9001": "7.2", "14001": "7.2", "45001": "7.2", "27001": "7.2", "22301": "7.2", "20000-1": "7.2"}},
+      {"grupo": "7", "tema": "Toma de conciencia", "integra": "si", "normas": {"9001": "7.3", "14001": "7.3", "45001": "7.3", "27001": "7.3 · A.6.3", "22301": "7.3", "20000-1": "7.3"}},
+      {"grupo": "7", "tema": "Comunicación", "integra": "si", "normas": {"9001": "7.4", "14001": "7.4.1–7.4.3", "45001": "7.4.1–7.4.3", "27001": "7.4", "22301": "7.4 · 8.4.3", "20000-1": "7.4"}, "nota": "22301 agrega la comunicación durante una disrupción (8.4.3)."},
+      {"grupo": "7", "tema": "Información documentada", "integra": "si", "normas": {"9001": "7.5.1–7.5.3", "14001": "7.5.1–7.5.3", "45001": "7.5.1–7.5.3", "27001": "7.5.1–7.5.3", "22301": "7.5.1–7.5.3", "20000-1": "7.5.1–7.5.4"}, "nota": "20000-1 añade 7.5.4: la lista de documentos propios del sistema de gestión del servicio."},
+      {"grupo": "8", "tema": "Planificación y control operacional", "integra": "no", "normas": {"9001": "8.1", "14001": "8.1", "45001": "8.1.1", "27001": "8.1", "22301": "8.1", "20000-1": "8.1"}, "nota": "Es el núcleo de cada norma: ver la tabla de la cláusula 8 en el mapa."},
+      {"grupo": "8", "tema": "Gestión del cambio operacional", "integra": "parcial", "normas": {"9001": "8.5.6", "14001": "8.1", "45001": "8.1.3", "27001": "8.1 · A.8.32", "22301": "", "20000-1": "8.5.1"}, "nota": "Un procedimiento de cambios, con los criterios de cada norma como pasos de evaluación."},
+      {"grupo": "8", "tema": "Proveedores y procesos externos", "integra": "parcial", "normas": {"9001": "8.4.1–8.4.3", "14001": "8.1", "45001": "8.1.4 (8.1.4.1–8.1.4.3)", "27001": "8.1 · A.5.19–A.5.22", "22301": "8.3.4", "20000-1": "8.3.4"}, "nota": "Una evaluación de proveedores con criterios de calidad, ambiente, SST, seguridad y continuidad."},
+      {"grupo": "8", "tema": "Requisitos del cliente y acuerdos de servicio", "integra": "parcial", "normas": {"9001": "8.2.1–8.2.4", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "8.3.2 · 8.3.3"}},
+      {"grupo": "8", "tema": "Diseño y transición", "integra": "parcial", "normas": {"9001": "8.3", "14001": "", "45001": "", "27001": "A.8.25", "22301": "", "20000-1": "8.5.2"}, "nota": "En 9001 es excluible si la organización no diseña."},
+      {"grupo": "8", "tema": "Liberación", "integra": "parcial", "normas": {"9001": "8.6", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "8.5.3"}},
+      {"grupo": "8", "tema": "Inventario de activos y configuración", "integra": "parcial", "normas": {"9001": "", "14001": "", "45001": "", "27001": "A.5.9", "22301": "", "20000-1": "8.2.5 · 8.2.6"}, "nota": "Un inventario único con los atributos que pide cada una."},
+      {"grupo": "8", "tema": "Capacidad y disponibilidad", "integra": "parcial", "normas": {"9001": "", "14001": "", "45001": "", "27001": "A.8.6 · A.8.14", "22301": "", "20000-1": "8.4.3 · 8.7.1"}},
+      {"grupo": "8", "tema": "Incidentes", "integra": "parcial", "normas": {"9001": "", "14001": "", "45001": "10.2", "27001": "A.5.24–A.5.28", "22301": "8.4", "20000-1": "8.6.1"}, "nota": "Un solo canal de reporte con tipo de incidente; cada tipo sigue su propio tratamiento. En 45001 la investigación vive en la cláusula 10."},
+      {"grupo": "8", "tema": "Emergencias y continuidad", "integra": "parcial", "normas": {"9001": "", "14001": "8.2", "45001": "8.2", "27001": "A.5.29 · A.5.30", "22301": "8.3–8.5", "20000-1": "8.7.2"}, "nota": "Un plan de emergencias con capítulo ambiental y de SST. La continuidad se documenta una vez en 22301 y se referencia desde 27001 y 20000-1."},
+      {"grupo": "8", "tema": "Análisis de impacto al negocio (BIA)", "integra": "no", "normas": {"9001": "", "14001": "", "45001": "", "27001": "", "22301": "8.2.2", "20000-1": ""}},
+      {"grupo": "8", "tema": "Ejercicios y evaluación de la continuidad", "integra": "no", "normas": {"9001": "", "14001": "", "45001": "", "27001": "", "22301": "8.5 · 8.6", "20000-1": ""}},
+      {"grupo": "8", "tema": "Salidas no conformes", "integra": "no", "normas": {"9001": "8.7 (8.7.1 · 8.7.2)", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": ""}},
+      {"grupo": "8", "tema": "Presupuesto y demanda del servicio", "integra": "no", "normas": {"9001": "", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "8.4.1 · 8.4.2"}},
+      {"grupo": "9", "tema": "Seguimiento, medición y análisis", "integra": "si", "normas": {"9001": "9.1.1 · 9.1.3", "14001": "9.1.1", "45001": "9.1.1", "27001": "9.1", "22301": "9.1", "20000-1": "9.1"}, "nota": "Un tablero de indicadores con columna de norma."},
+      {"grupo": "9", "tema": "Satisfacción del cliente", "integra": "parcial", "normas": {"9001": "9.1.2", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "8.3.2"}},
+      {"grupo": "9", "tema": "Evaluación del cumplimiento legal", "integra": "parcial", "normas": {"9001": "", "14001": "9.1.2", "45001": "9.1.2", "27001": "A.5.31", "22301": "", "20000-1": ""}, "nota": "Un ejercicio periódico con alcance ambiental y de SST. En 27001 la identificación de requisitos legales es un control del Anexo A."},
+      {"grupo": "9", "tema": "Auditoría interna", "integra": "si", "normas": {"9001": "9.2.1 · 9.2.2", "14001": "9.2.1 · 9.2.2", "45001": "9.2.1 · 9.2.2", "27001": "9.2.1 · 9.2.2", "22301": "9.2.1 · 9.2.2", "20000-1": "9.2"}, "nota": "Un programa integrado; la lista de verificación sí va por norma."},
+      {"grupo": "9", "tema": "Revisión por la dirección", "integra": "si", "normas": {"9001": "9.3.1–9.3.3", "14001": "9.3", "45001": "9.3", "27001": "9.3.1–9.3.3", "22301": "9.3.1–9.3.3", "20000-1": "9.3"}, "nota": "Una sola revisión que cubra las entradas de las seis."},
+      {"grupo": "9", "tema": "Informes del servicio", "integra": "no", "normas": {"9001": "", "14001": "", "45001": "", "27001": "", "22301": "", "20000-1": "9.4"}},
+      {"grupo": "10", "tema": "Generalidades de la mejora", "integra": "si", "normas": {"9001": "10.1", "14001": "10.1", "45001": "10.1", "27001": "", "22301": "", "20000-1": ""}, "nota": "27001, 22301 y 20000-1 no tienen este apartado: por eso su numeración se corre."},
+      {"grupo": "10", "tema": "No conformidad y acción correctiva", "integra": "si", "normas": {"9001": "10.2 (10.2.1 · 10.2.2)", "14001": "10.2", "45001": "10.2", "27001": "10.2", "22301": "10.1 (10.1.1 · 10.1.2)", "20000-1": "10.1"}, "nota": "Un registro único. El número cambia entre normas: es la trampa de cita más frecuente."},
+      {"grupo": "10", "tema": "Mejora continua", "integra": "si", "normas": {"9001": "10.3", "14001": "10.3", "45001": "10.3", "27001": "10.1", "22301": "10.2", "20000-1": "10.2"}}
+    ]
+  }
 }

@@ -73,7 +73,7 @@ Traducido: si en un informe de 22301 escribes "no conformidad respecto de la cl�
 | Norma | 6.3 |
 |---|---|
 | 9001:2015 | Planificación de los cambios |
-| 27001:2022 | Planificación de los cambios *(entró por la Enmienda 1:2024)* |
+| 27001:2022 | Planificación de los cambios *(nueva en la edición 2022)* |
 | 22301:2019 | Planificación de cambios en el sistema de gestión |
 | **20000-1:2018** | **Planificación del SGS** — ¡otra cosa! Aquí vive el plan de gestión del servicio |
 | 14001:2015 | no existe |
@@ -126,7 +126,7 @@ Esto es lo que se escapa del tronco común y suele ser lo que se olvida.
 | 6.1.2 | **Apreciación de riesgos de seguridad de la información** con metodología definida y criterios de aceptación |
 | 6.1.3 | Tratamiento de riesgos + la **Declaración de Aplicabilidad (SoA)** — documento obligatorio y exclusivo de esta norma |
 | **Anexo A** | **93 controles** (edición 2022, en 4 temas: organizacional, personas, físico, tecnológico) que hay que justificar uno a uno en la SoA |
-| 6.3 | Planificación de cambios (incorporada en la enmienda de 2024) |
+| 6.3 | Planificación de cambios (nueva en la edición 2022; no estaba en la 2013) |
 
 > La SoA es la pieza que no se puede integrar ni delegar. Es lo primero que pide el auditor y donde más se cae la gente.
 
@@ -213,6 +213,7 @@ python ../scripts/iso_sgi.py listar --norma 27001             # cláusulas + inf
 python ../scripts/iso_sgi.py estructura --normas 9001,27001 --org "Mi Empresa" --salida ./SGI
 python ../scripts/iso_sgi.py checklist --normas todas --salida ./checklist.csv
 python ../scripts/iso_sgi.py soa --salida ./soa.csv           # los 93 controles del Anexo A
+python ../scripts/iso_sgi.py correspondencia --normas 9001,27001 --formato csv --salida ./cruce.csv
 ```
 
 - **[`../datos/catalogo_normas.json`](../datos/catalogo_normas.json)** — cláusulas 4–10 de las 6 normas, 107 obligaciones de información documentada, los 93 controles y las trampas de numeración.
@@ -222,9 +223,8 @@ python ../scripts/iso_sgi.py soa --salida ./soa.csv           # los 93 controles
 
 ## Estado de este documento
 
-🚧 **Versión 0.2.** Numeración verificada y trampas documentadas (2026-08-16). Pendiente de desarrollar:
+🚧 **Versión 0.3.** Numeración verificada y trampas documentadas (2026-08-16). La correspondencia al nivel de subapartado, por tema, está en [`01_correspondencia_subapartados.md`](01_correspondencia_subapartados.md) (2026-11-04). Pendiente de desarrollar:
 
-- Tabla de correspondencia cláusula a cláusula al nivel de subapartado.
 - Mapeo de los 93 controles del Anexo A de 27001 contra las demás normas.
 - Ejemplos de política integrada y de matriz de partes interesadas.
 
@@ -235,4 +235,4 @@ python ../scripts/iso_sgi.py soa --salida ./soa.csv           # los 93 controles
 ---
 
 *Autoría: Jesús Seiler — auditor interno en las seis normas listadas. Material original, no afiliado a ISO ni al INN.*
-*Última actualización: 2026-08-16 · Licencia: CC BY-SA 4.0*
+*Última actualización: 2026-11-04 · Licencia: CC BY-SA 4.0*

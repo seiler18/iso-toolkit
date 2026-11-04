@@ -14,6 +14,7 @@ Solo biblioteca estandar. Probado en Python 3.10+.
     python iso_sgi.py estructura --normas 9001,27001 --org "Mi Empresa" --salida ./SGI
     python iso_sgi.py checklist --normas 45001 --salida ./checklist.csv
     python iso_sgi.py soa --salida ./soa_borrador.csv
+    python iso_sgi.py correspondencia --normas 9001,27001 --formato csv
     python iso_sgi.py instalar-skills --destino ../../.claude/skills
 
 AVISO LEGAL
@@ -553,6 +554,84 @@ def cmd_soa(args, datos: dict) -> None:
 
 
 # --------------------------------------------------------------------------
+# comando: correspondencia
+# --------------------------------------------------------------------------
+
+GRUPOS_ANEXO_SL = {
+    "4": "4 · Contexto de la organización",
+    "5": "5 · Liderazgo",
+    "6": "6 · Planificación",
+    "7": "7 · Apoyo",
+    "8": "8 · Operación",
+    "9": "9 · Evaluación del desempeño",
+    "10": "10 · Mejora",
+}
+MARCA_INTEGRA = {"si": "✅ Sí", "parcial": "⚠️ Parcial", "no": "⛔ No"}
+
+# El .md publicado en mapeo_integrado/ sale de aqui. Si se edita a mano, la
+# proxima regeneracion lo pisa: los cambios van en el catalogo o en este texto.
+CABECERA_MD = """# Correspondencia por subapartado — 6 normas
+
+**Normas:** {designaciones}
+
+> **Para qué sirve:** dado un tema (las partes interesadas, los proveedores, los incidentes…), dice en qué cláusula o control lo trata cada norma. Sirve para armar un sistema integrado sin duplicar documentos y para citar bien en un informe de auditoría.
+>
+> ⚠️ Material orientativo de autoría propia. **No reproduce el texto de las normas**: solo da referencias. Para implementar necesitas la norma oficial, adquirida legalmente (en Chile, al [INN](https://www.inn.cl)). Lee el [DISCLAIMER](../DISCLAIMER.md).
+
+**Cómo leerla.** Cada celda es la referencia donde la norma trata ese tema; `—` significa que no tiene un apartado para eso. Las referencias `A.x.x` son controles del Anexo A de 27001. La última columna dice si se documenta una sola vez (✅), en un documento con secciones o criterios por norma (⚠️) o por separado (⛔).
+
+La explicación de por qué se integra cada cosa está en el [mapa Anexo SL](00_mapa_anexo_sl.md). Esta tabla es la consulta rápida.
+
+"""
+
+PIE_MD = """---
+
+**Verificación.** {verificacion}
+
+*Generado con `python scripts/iso_sgi.py correspondencia` a partir de [`datos/catalogo_normas.json`](../datos/catalogo_normas.json): las correcciones van en el catálogo, no en este archivo.*
+*Autoría: Jesús Seiler — auditor interno en las seis normas listadas. Material original, no afiliado a ISO ni al INN. Licencia: CC BY-SA 4.0*
+"""
+
+
+def cmd_correspondencia(args, datos: dict) -> None:
+    normas = resolver_normas(datos, args.normas)
+    bloque = datos["correspondencia"]
+    # una fila sin referencia en ninguna de las normas pedidas no aporta nada
+    filas = [f for f in bloque["filas"] if any(f["normas"].get(n) for n in normas)]
+    salida = Path(args.salida or f"./correspondencia.{args.formato}").resolve()
+
+    if args.formato == "csv":
+        escribir_csv(salida,
+                     ["grupo", "tema", *normas, "integra", "nota"],
+                     [[f["grupo"], f["tema"], *(f["normas"].get(n, "") for n in normas),
+                       f["integra"], f.get("nota", "")] for f in filas])
+    else:
+        designaciones = " · ".join(datos["normas"][n]["designacion"] for n in normas)
+        partes = [CABECERA_MD.format(designaciones=designaciones)]
+        for grupo, titulo in GRUPOS_ANEXO_SL.items():
+            del_grupo = [f for f in filas if f["grupo"] == grupo]
+            if not del_grupo:
+                continue
+            partes.append(f"## {titulo}\n\n")
+            partes.append("| Tema | " + " | ".join(normas) + " | ¿Una vez? |\n")
+            partes.append("|---|" + "---|" * len(normas) + "---|\n")
+            for f in del_grupo:
+                celdas = [f["normas"].get(n) or "—" for n in normas]
+                partes.append(f"| {f['tema']} | " + " | ".join(celdas)
+                              + f" | {MARCA_INTEGRA[f['integra']]} |\n")
+            notas = [f for f in del_grupo if f.get("nota")]
+            if notas:
+                partes.append("\n" + "".join(f"- **{f['tema']}.** {f['nota']}\n" for f in notas))
+            partes.append("\n")
+        partes.append(PIE_MD.format(verificacion=bloque["verificacion"]))
+        escribir_texto(salida, "".join(partes))
+
+    print(f"\nOK — correspondencia por subapartado: {salida}")
+    print(f"   normas .... {', '.join(normas)}")
+    print(f"   temas ..... {len(filas)}\n")
+
+
+# --------------------------------------------------------------------------
 # comando: instalar-skills
 # --------------------------------------------------------------------------
 
@@ -607,6 +686,11 @@ def main() -> None:
     s = sub.add_parser("soa", help="genera el esqueleto de la Declaracion de Aplicabilidad (27001)")
     s.add_argument("--salida", default="./soa_borrador.csv")
 
+    r = sub.add_parser("correspondencia", help="tabla de en que clausula trata cada norma cada tema")
+    r.add_argument("--normas", default="todas", help="separadas por coma, o 'todas' (por defecto)")
+    r.add_argument("--formato", choices=["md", "csv"], default="md")
+    r.add_argument("--salida", help="por defecto ./correspondencia.md o .csv, segun --formato")
+
     i = sub.add_parser("instalar-skills", help="copia las skills a un directorio .claude/skills")
     i.add_argument("--destino", required=True, help="ruta a .claude/skills")
 
@@ -625,6 +709,8 @@ def main() -> None:
         cmd_checklist(args, datos)
     elif args.cmd == "soa":
         cmd_soa(args, datos)
+    elif args.cmd == "correspondencia":
+        cmd_correspondencia(args, datos)
 
 
 if __name__ == "__main__":

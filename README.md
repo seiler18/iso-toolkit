@@ -10,7 +10,7 @@
 
 | Carpeta | Qué contiene |
 |---|---|
-| [`mapeo_integrado/`](mapeo_integrado/) | ⭐ **El mapa Anexo SL de 6 normas.** Qué documentas una vez y qué te obliga a duplicar cada norma. |
+| [`mapeo_integrado/`](mapeo_integrado/) | ⭐ **El mapa Anexo SL de 6 normas.** Qué documentas una vez y qué te obliga a duplicar cada norma, más la [tabla de correspondencia por subapartado](mapeo_integrado/01_correspondencia_subapartados.md): 45 temas, en qué cláusula los trata cada una. |
 | [`skills/`](skills/) | ⭐ **8 métodos ejecutables**: diagnóstico de brechas, levantar un SGI, riesgos, SoA, BIA, auditoría interna, no conformidades, revisión por la dirección. Cada uno con lo que revisa el auditor y los errores que se repiten. |
 | [`datos/`](datos/) | El catálogo estructurado: cláusulas 4–10 de las 6 normas, información documentada obligatoria, los 93 controles del Anexo A y las trampas de numeración. Legible por máquina. |
 | [`scripts/`](scripts/) | `iso_sgi.py` — genera la estructura de un SGI, la lista maestra, checklists por norma y el esqueleto de la SoA. Sin dependencias. |
@@ -93,4 +93,4 @@ Los issues son bienvenidos: errores, cruces que faltan, plantillas que te gustar
 
 ## Estado
 
-🚧 **En construcción activa** (iniciado en agosto de 2026). Listos: el catálogo, las 8 skills y el generador. En curso: el mapa de integración al nivel de subapartado. Después: las plantillas. Si quieres seguir el avance, dale ⭐ al repo.
+🚧 **En construcción activa** (iniciado en agosto de 2026). Listos: el catálogo, las 8 skills, el generador y el mapa de integración con su tabla por subapartado. En curso: el cruce de los 93 controles del Anexo A de 27001 con las demás normas. Después: las plantillas. Si quieres seguir el avance, dale ⭐ al repo.

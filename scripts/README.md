@@ -64,6 +64,17 @@ Los 93 controles del Anexo A con las columnas de decisión: `aplica`, `justifica
 
 ⚠️ **Haz primero la matriz de riesgos.** Una SoA sin riesgos detrás es exactamente el hallazgo que busca el auditor.
 
+### `correspondencia` — en qué cláusula trata cada norma cada tema
+
+```bash
+python iso_sgi.py correspondencia --salida ../mapeo_integrado/01_correspondencia_subapartados.md
+python iso_sgi.py correspondencia --normas 9001,27001 --formato csv --salida ./cruce.csv
+```
+
+45 temas (partes interesadas, proveedores, incidentes, cambios…) con la referencia de cada norma al nivel de subapartado y si se documenta una vez o por separado. Con `--normas` quedan solo las columnas pedidas y se descartan los temas que ninguna de ellas trata.
+
+El primer comando es el que genera el `.md` publicado en `mapeo_integrado/`: una corrección va en `correspondencia` del catálogo y después se regenera.
+
 ### `instalar-skills` — activar las skills en Claude Code
 
 ```bash
