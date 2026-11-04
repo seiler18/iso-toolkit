@@ -17,10 +17,9 @@ Todo. No hay arqueología: es el producto en construcción.
 
 ## La regla de este repo
 
-**Se escribe como si ya fuera público**, porque lo será. Hoy es privado
-(`seiler18/iso-toolkit`) y se abre solo después de pasar el checklist de
-`../organizador-iso/contexto/limites_legales.md`. Publicar es irreversible:
-git conserva el historial aunque después se borre algo.
+**Es público** (`seiler18/iso-toolkit`, desde el 2026-11-04). Todo cambio pasa
+antes de su push por la skill `chequeo-legal` de `../organizador-iso`: lo que
+llega a GitHub queda en el historial aunque después se borre.
 
 - Nunca texto de las normas: se parafrasea y se cita la cláusula.
 - Nunca material, nombres ni casos de un empleador ni de ningún cliente. Ni
