@@ -1,0 +1,38 @@
+# ============================================================
+#  REPO PÚBLICO — máxima paranoia.
+#  Todo lo que se sube aquí es visible para el mundo entero,
+#  para siempre (git conserva el historial aunque borres).
+# ============================================================
+
+# --- Normas ISO: obra protegida, JAMÁS en un repo público ---
+*.pdf
+normas/
+_privado/
+
+# --- Documentos ofimáticos: casi siempre traen datos o metadatos ---
+# Las plantillas públicas se publican en .md. Si algún día se publica
+# un .docx/.xlsx, hay que desbloquearlo a mano Y limpiar sus metadatos
+# (autor, empresa, comentarios, control de cambios).
+*.docx
+*.xlsx
+*.pptx
+*.pptm
+*.doc
+*.xls
+*.url
+
+# --- Cualquier rastro de organizaciones reales ---
+# Los nombres concretos van en .git/info/exclude, que no se publica.
+clientes/
+casos_reales/
+
+# --- Temporales ---
+scratchpad/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
