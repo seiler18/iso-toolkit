@@ -13,9 +13,9 @@
 | [`mapeo_integrado/`](mapeo_integrado/) | ⭐ **El mapa Anexo SL de 6 normas.** Qué documentas una vez y qué te obliga a duplicar cada norma. |
 | [`skills/`](skills/) | ⭐ **8 métodos ejecutables**: diagnóstico de brechas, levantar un SGI, riesgos, SoA, BIA, auditoría interna, no conformidades, revisión por la dirección. Cada uno con lo que revisa el auditor y los errores que se repiten. |
 | [`datos/`](datos/) | El catálogo estructurado: cláusulas 4–10 de las 6 normas, información documentada obligatoria, los 93 controles del Anexo A y las trampas de numeración. Legible por máquina. |
-| [`scripts/`](scripts/) | `iso_sgi.py` — genera la estructura de un SGI, la lista maestra, checklists y el esqueleto de la SoA. Sin dependencias. |
-| [`checklists/`](checklists/) | Listas de verificación por norma y por cláusula, para autodiagnóstico y auditoría interna. |
-| [`plantillas/`](plantillas/) | Plantillas en Markdown: política integrada, matriz de partes interesadas, RACI, registro de NC/AC, programa de auditoría… |
+| [`scripts/`](scripts/) | `iso_sgi.py` — genera la estructura de un SGI, la lista maestra, checklists por norma y el esqueleto de la SoA. Sin dependencias. |
+
+**En preparación:** las plantillas del tronco común (política integrada, matriz de partes interesadas, RACI, registro de NC/AC, programa de auditoría…) y los checklists revisados a mano. Mientras tanto, los checklists se generan con `iso_sgi.py checklist`.
 
 ## Prueba rápida
 
@@ -62,7 +62,7 @@ Y falta, sobre todo, algo que casi nadie aborda: **cómo integrar varias normas 
 1. Lee el [mapa de integración Anexo SL](mapeo_integrado/00_mapa_anexo_sl.md) — entenderás la arquitectura de cualquier norma ISO de sistemas de gestión en 10 minutos.
 2. Haz el diagnóstico de brechas siguiendo [`skills/iso-diagnostico-brechas`](skills/iso-diagnostico-brechas/SKILL.md), con el checklist que genera `scripts/iso_sgi.py checklist`.
 3. Levanta la estructura con [`skills/iso-levantar-sgi`](skills/iso-levantar-sgi/SKILL.md) y `scripts/iso_sgi.py estructura`.
-4. Usa las plantillas del tronco común (`plantillas/`) para lo que te falte.
+4. Completa lo que te falte con las plantillas del tronco común (en preparación).
 
 > **El orden importa.** Diagnosticar antes de documentar te ahorra escribir cosas que ya tenías. Y la auditoría interna y la revisión por la dirección exigen que el sistema lleve meses operando: se planifican al principio aunque se ejecuten al final.
 
@@ -93,4 +93,4 @@ Los issues son bienvenidos: errores, cruces que faltan, plantillas que te gustar
 
 ## Estado
 
-🚧 **En construcción activa** (iniciado en agosto de 2026). El mapa de integración es lo primero. Si quieres seguir el avance, dale ⭐ al repo.
+🚧 **En construcción activa** (iniciado en agosto de 2026). Listos: el catálogo, las 8 skills y el generador. En curso: el mapa de integración al nivel de subapartado. Después: las plantillas. Si quieres seguir el avance, dale ⭐ al repo.
